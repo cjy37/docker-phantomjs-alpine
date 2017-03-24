@@ -1,8 +1,8 @@
-FROM alpine:latest
+FROM mhart/alpine-node:7.7.1
 
 ENV PHANTOMJS_VERSION 2.1.1
 COPY *.patch /
-RUN apk add --no-cache --virtual .build-deps \
+RUN apk update && apk upgrade && apk add --no-cache --virtual .build-deps \
 		bison \
 		flex \
 		fontconfig-dev \
