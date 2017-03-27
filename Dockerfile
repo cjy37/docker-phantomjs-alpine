@@ -2,7 +2,7 @@ FROM mhart/alpine-node:7.7.1
 
 ENV PHANTOMJS_VERSION 2.1.1
 COPY *.patch /
-RUN apk update && apk upgrade && apk add --no-cache --virtual .build-deps \
+RUN apk update && apk upgrade && apk add --no-cache \
 		bison \
 		flex \
 		fontconfig-dev \
@@ -49,7 +49,7 @@ RUN apk update && apk upgrade && apk add --no-cache --virtual .build-deps \
 			| xargs -r apk info --installed \
 			| sort -u \
 	)" \
-	&& apk add --virtual .phantomjs-rundeps $runDeps \
-	&& apk del .build-deps \
+	&& apk add $runDeps \
+	&& rm -rf /usr/include /usr/share/man /tmp/* /var/cache/apk/* \
 	&& rm -r /*.patch /usr/src
 
