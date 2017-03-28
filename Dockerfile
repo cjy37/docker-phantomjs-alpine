@@ -2,7 +2,9 @@ FROM mhart/alpine-node:7.7.1
 
 COPY fonts.tar.bz2 /tmp/fonts.tar.bz2
 
-RUN tar -xjvf /tmp/fonts.tar.bz2 -C /usr/share/fonts && mkdir /tmp/phantomjs
+RUN mkdir -p /usr/share/fonts \
+	&& tar -xjvf /tmp/fonts.tar.bz2 -C /usr/share/fonts \
+	&& mkdir /tmp/phantomjs
 
 RUN apk update \
 	&& apk upgrade \
