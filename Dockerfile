@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:7.10.0
+FROM mhart/alpine-node:8
 
 COPY fonts.tar.bz2 /tmp/fonts.tar.bz2
 
